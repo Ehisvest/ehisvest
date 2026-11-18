@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EhisVest | Learning Dashboard</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6f8;color:#172b3a}
+
+header{background:#102c42;color:white;padding:22px 7%;display:flex;justify-content:space-between;align-items:center}
+
+.logo{font-size:25px;font-weight:bold;color:#55d6a1}
+
+header span{font-size:12px;color:#c9d7df}
+
+main{max-width:1100px;margin:35px auto;padding:0 20px}
+
+.notice{background:#fff4d6;padding:14px;border-radius:10px;color:#765b13;font-size:13px;margin-bottom:22px}
+
+.welcome{margin-bottom:25px}
+
+.welcome h1{margin-bottom:5px}
+
+.welcome p{color:#73818c}
+
+.balance{background:linear-gradient(120deg,#123b55,#087b70);color:white;padding:28px;border-radius:16px;margin-bottom:22px}
+
+.balance small{color:#c8e6e0}
+
+.amount{font-size:36px;font-weight:bold;margin:12px 0}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:25px}
+
+.card{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 12px #142b3a0c}
+
+.card small{color:#71808c}
+
+.card h2{margin-bottom:0}
+
+.section-title{margin:30px 0 15px}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+
+.plan{background:white;padding:22px;border-radius:12px;border:1px solid #e4e9ed}
+
+.plan h3{margin-top:0}
+
+.plan p{color:#6e7b85;font-size:14px;line-height:1.5}
+
+.tag{display:inline-block;background:#e1f6ed;color:#14744c;padding:6px 10px;border-radius:20px;font-size:11px}
+
+button{background:#087b70;color:white;border:0;padding:12px 18px;border-radius:7px;cursor:pointer;font-weight:bold}
+
+button:hover{background:#075e56}
+
+.calculator{background:white;padding:22px;border-radius:12px}
+
+input{width:100%;padding:12px;border:1px solid #ccd5dc;border-radius:7px;margin:10px 0 17px;font-size:16px}
+
+.result{background:#edf7f3;padding:15px;border-radius:8px;margin-top:15px}
+
+footer{text-align:center;padding:35px;color:#78838d;font-size:12px}
+
+@media(max-width:650px){.stats,.plans{grid-template-columns:1fr}header{padding:18px}main{margin:20px auto}.amount{font-size:29px}}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">EhisVest</div>
+
+  <span>EDUCATIONAL PLATFORM</span>
+
+</header>
+
+<main>
+
+<div class="notice">
+
+  EDUCATIONAL DEMO ONLY: All balances and returns are fictional.
+
+  No real money is accepted or invested.
+
+</div>
+
+<div class="welcome">
+
+  <h1>Welcome to EhisVest</h1>
+
+  <p>Learn about investing and explore your demo portfolio.</p>
+
+</div>
+
+<div class="balance">
+
+  <small>YOUR VIRTUAL ACCOUNT BALANCE</small>
+
+  <div class="amount" id="balance">$10,000.00</div>
+
+  <small>Simulated funds • Not real money</small>
+
+</div>
+
+<div class="stats">
+
+  <div class="card">
+
+    <small>Virtual investments</small>
+
+    <h2>$2,000.00</h2>
+
+  </div>
+
+  <div class="card">
+
+    <small>Simulated returns</small>
+
+    <h2>$150.00</h2>
+
+  </div>
+
+  <div class="card">
+
+    <small>Account status</small>
+
+    <h2 style="color:#159568">Demo</h2>
+
+  </div>
+
+</div>
+
+<h2 class="section-title">Educational investment examples</h2>
+
+<div class="plans">
+
+  <div class="plan">
+
+    <span class="tag">BEGINNER</span>
+
+    <h3>Starter Plan</h3>
+
+    <p>Learn the basics of investing, saving and managing risk.</p>
+
+    <p>Example amount: $100</p>
+
+    <button onclick="showPlan('Starter Plan')">Explore plan</button>
+
+  </div>
+
+  <div class="plan">
+
+    <span class="tag">INTERMEDIATE</span>
+
+    <h3>Growth Plan</h3>
+
+    <p>Explore hypothetical investment growth and market changes.</p>
+
+    <p>Example amount: $500</p>
+
+    <button onclick="showPlan('Growth Plan')">Explore plan</button>
+
+  </div>
+
+  <div class="plan">
+
+    <span class="tag">ADVANCED</span>
+
+    <h3>Premium Plan</h3>
+
+    <p>Learn about diversification and higher-risk investments.</p>
+
+    <p>Example amount: $1,000</p>
+
+    <button onclick="showPlan('Premium Plan')">Explore plan</button>
+
+  </div>
+
+</div>
+
+<h2 class="section-title">Virtual return calculator</h2>
+
+<div class="calculator">
+
+  <p>Enter a hypothetical amount and annual return rate to explore how investments can grow.</p>
+
+  <label>Example investment amount ($)</label>
+
+  <input type="number" id="principal" value="1000" min="0">
+
+  <label>Hypothetical annual return (%)</label>
+
+  <input type="number" id="rate" value="5" min="-100" max="1000">
+
+  <label>Number of years</label>
+
+  <input type="number" id="years" value="1" min="1" max="50">
+
+  <button onclick="calculate()">Calculate example</button>
+
+  <div class="result" id="result">
+
+    Your hypothetical result will appear here.
+
+  </div>
+
+</div>
+
+</main>
+
+<footer>
+
+  © 2026 EhisVest Educational Project.
+
+  For learning and demonstration only. Not a financial service.
+
+</footer>
+
+<script>
+
+function showPlan(name){
+
+  alert(name + ": This is an educational example, not a real investment product.");
+
+}
+
+function calculate(){
+
+  const p=Number(document.getElementById("principal").value);
+
+  const r=Number(document.getElementById("rate").value);
+
+  const y=Number(document.getElementById("years").value);
+
+  const output=document.getElementById("result");
+
+  if(!Number.isFinite(p)||!Number.isFinite(r)||!Number.isFinite(y)||
+
+     p<0||r<=-100||r>1000||y<1||y>50||
+
+     !Number.isInteger(y)){
+
+    output.textContent="Please enter valid amounts, a rate above -100%, and 1–50 whole years.";
+
+    return;
+
+  }
+
+  const total=p*Math.pow(1+r/100,y);
+
+  output.innerHTML="Hypothetical final value: <strong>$"+
+
+    total.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+
+
+    "</strong><br>Hypothetical change: $"+
+
+    (total-p).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})+
+
+    "<br><small>Illustrative calculation only. Actual returns can be negative.</small>"; }
+
+</script>
+
+</body>
+
+</html>
